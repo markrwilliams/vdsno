@@ -182,9 +182,9 @@ func rewriteAuxVector(stack []byte, stackStart, rsp uint64) error {
 	}
 
 	copy(stack[auxvEhdr:auxvEnd-16], stack[auxvEhdr+16:auxvEnd])
-	// for i := auxvEnd - 16; i < auxvEnd; i++ {
-	// 	stack[i] = 0
-	// }
+	for i := auxvEnd - 16; i < auxvEnd; i++ {
+		stack[i] = 0
+	}
 
 	return nil
 }
